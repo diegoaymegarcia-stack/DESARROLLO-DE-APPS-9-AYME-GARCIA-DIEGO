@@ -1,0 +1,15 @@
+.card {
+    background: white;
+    padding: $espacio;
+    border-radius: $radio;
+    margin-bottom: $espacio;
+    @include sombra;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p {
+        color: #555;
+    }
+}

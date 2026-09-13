@@ -1,0 +1,81 @@
+.btn, .btn-oferta, .btn-comprar {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-comprar {
+  background: #111827;
+  color: white;
+}
+
+.btn-oferta {
+  background: #dc2626;
+  color: white;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.card h3 {
+  margin-top: 0;
+}
+.card p {
+  color: #555;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+}
+
+header {
+  background: #111827;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 30px;
+}
+
+.precio {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.estado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* Mapa de colores */
+/* Loop */
+.estado-disponible {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.estado-agotado {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.estado-oferta {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=main.css.map */

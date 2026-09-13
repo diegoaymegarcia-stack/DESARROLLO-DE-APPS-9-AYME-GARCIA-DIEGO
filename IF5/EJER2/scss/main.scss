@@ -1,0 +1,49 @@
+@import "variables";
+@import "mixins";
+@import "buttons";
+@import "cards";
+
+body {
+    font-family: $fuente;
+    background: $color-secundario;
+    margin: 0;
+}
+
+header {
+    background: $color-principal;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $espacio;
+    padding: 30px;
+}
+
+.precio {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.estado {
+    @include centrar;
+    margin: 10px 0;
+}
+
+/* Mapa de colores */
+$estados: (
+    disponible: $color-exito,
+    agotado: $color-peligro,
+    oferta: #f59e0b
+);
+
+/* Loop */
+@each $nombre, $color in $estados {
+    .estado-#{$nombre} {
+        color: $color;
+        font-weight: bold;
+    }
+}

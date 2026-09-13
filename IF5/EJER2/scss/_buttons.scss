@@ -1,0 +1,18 @@
+.btn {
+    padding: 10px 18px;
+    border-radius: $radio;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-comprar {
+    @extend .btn;
+    background: $color-principal;
+    color: white;
+}
+
+.btn-oferta {
+    @extend .btn;
+    background: $color-peligro;
+    color: white;
+}
