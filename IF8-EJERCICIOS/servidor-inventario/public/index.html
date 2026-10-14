@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NEXO Inventario</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main>
+    <h1>NEXO <span>INVENTARIO</span></h1>
+    <p>Consulta de productos con Python y http.server</p>
+    <form id="buscar">
+      <input id="filtro" placeholder="Buscar producto...">
+      <select id="limite"><option>5</option><option>10</option><option>100</option></select>
+      <button>Buscar</button>
+    </form>
+    <p id="info"></p>
+    <div id="lista"></div>
+    <nav><button id="anterior">Anterior</button><span id="pagina"></span><button id="siguiente">Siguiente</button></nav>
+  </main>
+  <script>
+    let pagina = 1, totalPaginas = 0;
+    async function cargar() {
+      const filtro = document.querySelector('#filtro').value;
+      const limite = document.querySelector('#limite').value;
+      try {
+        const r = await fetch(`/api/inventario?${new URLSearchParams({filtro, limite, pagina})}`);
+        if (!r.ok) throw new Error('No se pudo consultar el inventario');
+        const datos = await r.json();
+        totalPaginas = datos.total_paginas;
+        document.querySelector('#info').textContent = `${datos.total} productos encontrados`;
+        document.querySelector('#pagina').textContent = `Página ${pagina} de ${totalPaginas}`;
+        document.querySelector('#lista').replaceChildren();
+        datos.datos.forEach(p => {
+          const fila = document.createElement('article');
+          fila.textContent = `${p.nombre} — S/ ${p.precio.toFixed(2)} — Stock: ${p.stock}`;
+          document.querySelector('#lista').append(fila);
+        });
+        document.querySelector('#anterior').disabled = pagina <= 1;
+        document.querySelector('#siguiente').disabled = pagina >= totalPaginas;
+      } catch (error) { document.querySelector('#info').textContent = error.message; }
+    }
+    document.querySelector('#buscar').onsubmit = e => { e.preventDefault(); pagina = 1; cargar(); };
+    document.querySelector('#anterior').onclick = () => { if (pagina > 1) { pagina--; cargar(); } };
+    document.querySelector('#siguiente').onclick = () => { if (pagina < totalPaginas) { pagina++; cargar(); } };
+    cargar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+body {
+  background: #101827;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+main {
+  max-width: 750px;
+  margin: 60px auto;
+  padding: 20px;
+}
+span { color: #5695ff; }
+form, nav { display: flex; gap: 10px; margin: 25px 0; }
+input, select, button {
+  padding: 12px;
+  border: 0;
+  border-radius: 7px;
+}
+input { flex: 1; min-width: 0; }
+button { background: #3478f6; color: white; cursor: pointer; }
+button:disabled { opacity: .4; cursor: default; }
+article {
+  padding: 18px;
+  margin: 10px 0;
+  background: #1c2940;
+  border-radius: 8px;
+}
+@media (max-width: 500px) {
+  form { flex-wrap: wrap; }
+  input { flex-basis: 100%; }
+}
